@@ -24,4 +24,29 @@ package nl.novi.opdrachten.methodes;
  */
 
 public class DeelbaarDoorX {
+    public static void main(String[] args) {
+        System.out.println(isDivisible(15, 5));
+        System.out.println(isDivisible(13, 3));
+        System.out.println(isDivisible(14, 4));
+    }
+
+    public static String isDivisible(int number, int divisible) {
+        if(number % divisible == 0) {
+            return number + " is deelbaar door " + divisible;
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("Het getal ").append(number).append(" is niet deelbaar door: ").append(divisible).append(".\n");
+
+        int restNumber = number % divisible;
+        double sum = (double) restNumber/divisible;
+
+        if(sum < 0.50) {
+            stringBuilder.append("Verlaag het getal met ").append(restNumber);
+        } else {
+            stringBuilder.append("Verhoog het getal met ").append(divisible-restNumber);
+        }
+        return stringBuilder.toString();
+    }
 }
