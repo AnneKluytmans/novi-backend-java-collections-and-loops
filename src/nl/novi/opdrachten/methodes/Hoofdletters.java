@@ -32,23 +32,37 @@ public class Hoofdletters {
         customerNames.add("mo el-mecky");
         customerNames.add("fredje kadetje");
 
+
+        List<String> updatedNames = capitalizeNames(customerNames);
+        for (String name : updatedNames) {
+            System.out.println(name);
+        }
+    }
+
+    public static List<String> capitalizeNames(List<String> names) {
         List<String> tussenVoegsels = new ArrayList<>();
         tussenVoegsels.add("van");
         tussenVoegsels.add("der");
         tussenVoegsels.add("den");
         tussenVoegsels.add("de");
 
-//        List<String> updatedNames = capitalizeNames(customerNames);
-//        for (String name : updatedNames) {
-//            System.out.println(name);
-//        }
-//
-//
-//        public static List<String> capitalizeNames(List<String> names) {
-//            List<String> capitalizedNames = new ArrayList<>();
-//
-//
-//            return capitalizedNames;
-//        }
+        List<String> capitalizedNames = new ArrayList<>();
+
+        for (String n : names) {
+            String[] splitNames = n.split(" ");
+
+            for (int i = 0; i < splitNames.length; i++) {
+                String splitName = splitNames[i];
+
+                if(!tussenVoegsels.contains(splitName.toLowerCase())) {
+                    splitNames[i] = splitName.substring(0, 1).toUpperCase() + splitName.substring(1);
+                }
+            }
+
+            String capitalizedName = String.join(" ", splitNames);
+            capitalizedNames.add(capitalizedName);
+        }
+
+        return capitalizedNames;
     }
 }
